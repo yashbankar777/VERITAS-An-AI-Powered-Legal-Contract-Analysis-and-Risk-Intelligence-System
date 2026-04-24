@@ -1,12 +1,12 @@
-# VERITAS
+# ⚖️ VERITAS
 
-### Hybrid Neuro-Symbolic AI for Legal Contract Intelligence
+### 🧠 Hybrid Neuro-Symbolic AI for Legal Contract Intelligence
 
 VERITAS is a hybrid neuro-symbolic AI system that analyzes legal contracts using transformer-based NLP, ontology-driven symbolic reasoning, and explainable AI to generate clause insights, risk analysis, and contract intelligence reports.
 
 ---
 
-# Overview
+# 📖 Overview
 
 Modern legal contracts are lengthy, complex, and difficult to review manually at scale.
 VERITAS was developed as an end-to-end AI-powered legal intelligence system capable of:
@@ -20,7 +20,9 @@ VERITAS was developed as an end-to-end AI-powered legal intelligence system capa
 
 The system combines multiple AI paradigms into a unified architecture, moving beyond traditional single-model NLP pipelines.
 
-# Dataset Information
+---
+
+# 📊 Dataset Information
 
 VERITAS was primarily developed using the **CUAD (Contract Understanding Atticus Dataset)** for legal clause extraction, annotation, and classification tasks.
 
@@ -40,12 +42,11 @@ The system was trained and evaluated on commercial contract clauses covering are
 * liability limitations
 * dispute resolution
 
-Additional synthetic and manually enriched datasets were also created to improve ontology coverage, class balance, and explainability generation.  
-
+Additional synthetic and manually enriched datasets were also created to improve ontology coverage, class balance, and explainability generation. 
 
 ---
 
-# AI Paradigms Implemented
+# 🧠 AI Paradigms Implemented
 
 VERITAS integrates multiple artificial intelligence paradigms into one layered system:
 
@@ -60,9 +61,9 @@ VERITAS integrates multiple artificial intelligence paradigms into one layered s
 
 ---
 
-# System Architecture
+# 🏗️ System Architecture
 
-```text
+```text id="g1"
 Raw Legal Contract
         ↓
 Clause Segmentation
@@ -80,9 +81,101 @@ Contract Intelligence Report
 
 ---
 
-# Project Structure
+# 🔄 Cross-Notebook Architecture Flow
 
-```text
+VERITAS was intentionally designed as a layered pipeline where each notebook produces artifacts consumed by the next stage of the system.
+
+---
+
+## 📘 Notebook 01 → Legal-BERT Clause Classification
+
+Notebook 01 performs:
+
+* CUAD preprocessing and cleaning
+* Clause label mapping
+* Legal-BERT fine-tuning
+* Model evaluation and testing
+
+### Outputs Generated
+
+```text id="g2"
+legal_bert_classifier/
+```
+
+Contains:
+
+* trained Legal-BERT model
+* tokenizer files
+* label_classes.npy
+* configuration artifacts
+
+These outputs become the **Neural AI layer** used later by Notebook 03 for real-time clause classification inference.
+
+---
+
+## 📗 Notebook 02 → Legal Ontology & Knowledge Graph
+
+Notebook 02 builds the symbolic reasoning layer on top of the legal clause categories established in Notebook 01.
+
+It creates:
+
+* legal ontologies
+* risk-domain mappings
+* dependency relationships
+* symbolic knowledge graphs
+* graph centrality analysis
+
+### Outputs Generated
+
+```text id="g3"
+ontology_artifacts/
+```
+
+Contains:
+
+* ontology_graph.graphml
+* ontology_edges.csv
+* ontology_nodes.csv
+* centrality_analysis.csv
+* enriched clause datasets
+
+These outputs become the **Symbolic AI layer** used later by Notebook 03 for ontology enrichment and risk reasoning.
+
+---
+
+## 📙 Notebook 03 → Hybrid AI Reasoning & Explainability
+
+Notebook 03 acts as the orchestration layer integrating:
+
+* Neural AI from Notebook 01
+* Symbolic AI from Notebook 02
+* Explainability and report generation
+
+### Runtime Pipeline
+
+```text id="g4"
+Raw Contract
+      ↓
+Clause Segmentation
+      ↓
+Legal-BERT Inference (NB01 artifacts)
+      ↓
+Ontology Querying & Symbolic Enrichment (NB02 artifacts)
+      ↓
+Risk Scoring
+      ↓
+LLM / Fallback Explainability
+      ↓
+Contract Intelligence Report
+```
+
+This notebook powers the final Flask frontend application and produces the complete end-to-end legal intelligence workflow.
+
+---
+
+# 📁 Project Structure
+
+```text id="g5"
 VERITAS/
 │
 ├── app.py
@@ -109,7 +202,7 @@ VERITAS/
 
 ---
 
-# Notebook Breakdown
+# 📘 Notebook Breakdown
 
 ## Notebook 01 — Legal-BERT Clause Classification
 
@@ -157,7 +250,7 @@ Implements the full orchestration pipeline integrating neural AI, symbolic AI, a
 
 ---
 
-# Frontend Interface
+# 💻 Frontend Interface
 
 VERITAS includes a lightweight Flask-based frontend interface for demonstrating the complete AI pipeline interactively.
 
@@ -173,7 +266,7 @@ VERITAS includes a lightweight Flask-based frontend interface for demonstrating 
 
 ---
 
-# Technologies Used
+# 🛠️ Technologies Used
 
 | Category        | Technologies             |
 | --------------- | ------------------------ |
@@ -188,7 +281,7 @@ VERITAS includes a lightweight Flask-based frontend interface for demonstrating 
 
 ---
 
-# Example Capabilities
+# ⚡ Example Capabilities
 
 VERITAS can identify and analyze clauses such as:
 
@@ -213,11 +306,11 @@ The system then enriches these classifications with:
 
 ---
 
-# Running the Project
+# 🚀 Running the Project
 
 ## 1. Clone the Repository
 
-```bash
+```bash id="g6"
 git clone https://github.com/your-username/VERITAS.git
 cd VERITAS
 ```
@@ -226,7 +319,7 @@ cd VERITAS
 
 ## 2. Install Dependencies
 
-```bash
+```bash id="g7"
 pip install flask transformers torch pandas numpy networkx matplotlib
 ```
 
@@ -234,7 +327,7 @@ pip install flask transformers torch pandas numpy networkx matplotlib
 
 ## 3. Run the Application
 
-```bash
+```bash id="g8"
 python app.py
 ```
 
@@ -242,13 +335,13 @@ python app.py
 
 ## 4. Open in Browser
 
-```text
+```text id="g9"
 http://127.0.0.1:5000
 ```
 
 ---
 
-# Important Notes
+# ⚠️ Important Notes
 
 * VERITAS is an academic/research-oriented project.
 * Risk scores are heuristic symbolic approximations and not formal legal advice.
@@ -260,9 +353,7 @@ http://127.0.0.1:5000
 
 ---
 
----
-
-# Future Improvements
+# 🔮 Future Improvements
 
 Potential future enhancements include:
 
@@ -276,12 +367,12 @@ Potential future enhancements include:
 
 ---
 
-# Authors
+# 👨‍💻 Authors
 
 Developed as part of an advanced AI and intelligent systems project exploring hybrid neuro-symbolic legal intelligence architectures.
 
 ---
 
-# VERITAS
+# ⚖️ VERITAS
 
 > Truth through intelligence.
