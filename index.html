@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VERITAS — Contract Intelligence</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ── NAVIGATION ──────────────────────────────────────────────────────── -->
+  <nav class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" onclick="showSection('landing'); return false;">
+        <span class="nav-logo-mark">V</span>
+        <span class="nav-logo-text">ERITAS</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#" class="nav-link" onclick="showSection('landing'); return false;">Overview</a>
+        <a href="#" class="nav-link" onclick="showSection('workspace'); return false;">Analysis</a>
+        <a href="#" class="nav-link" onclick="showSection('intelligence'); return false;">Intelligence</a>
+      </div>
+
+      <div class="nav-actions">
+        {% if not pipeline_loaded %}
+        <span class="nav-status nav-status--warn">Pipeline Offline</span>
+        {% else %}
+        <span class="nav-status nav-status--ok">System Ready</span>
+        {% endif %}
+        <button class="nav-cta" onclick="showSection('workspace')">Begin Analysis</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECTION 1 — LANDING
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <section id="section-landing" class="page-section active">
+
+    <!-- Hero -->
+    <div class="landing-hero">
+      <div class="hero-bg-grid" aria-hidden="true"></div>
+      <div class="hero-bg-vignette" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-line"></span>
+          <span class="eyebrow-text">Executive Contract Intelligence</span>
+          <span class="eyebrow-line"></span>
+        </div>
+
+        <h1 class="hero-wordmark">
+          <span class="wordmark-v">V</span><span class="wordmark-rest">ERITAS</span>
+        </h1>
+
+        <p class="hero-descriptor">Strategic Legal Advisory</p>
+
+        <p class="hero-statement">
+          Institutional-grade contract analysis.<br>
+          <em>Engineered for counsel who require clarity.</em>
+        </p>
+
+        <div class="hero-actions">
+          <button class="hero-btn-primary" onclick="showSection('workspace')">
+            Initiate Analysis
+          </button>
+          <button class="hero-btn-ghost" onclick="showSection('intelligence')">
+            Intelligence Architecture
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-metrics">
+        <div class="hero-metric">
+          <span class="hm-value">Neural</span>
+          <span class="hm-label">Classification</span>
+        </div>
+        <div class="hero-metric-divider"></div>
+        <div class="hero-metric">
+          <span class="hm-value">Symbolic</span>
+          <span class="hm-label">Reasoning</span>
+        </div>
+        <div class="hero-metric-divider"></div>
+        <div class="hero-metric">
+          <span class="hm-value">Generative</span>
+          <span class="hm-label">Explanation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Value propositions -->
+    <div class="landing-pillars">
+      <div class="pillars-inner">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <h3 class="pillar-title">Clause Extraction</h3>
+          <p class="pillar-body">Precise identification and isolation of contractual provisions across complex multi-party agreements.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <h3 class="pillar-title">Risk Assessment</h3>
+          <p class="pillar-body">Quantitative exposure scoring across liability, compliance, financial, and operational risk domains.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <h3 class="pillar-title">Legal Intelligence</h3>
+          <p class="pillar-body">Executive-grade summaries translating legal complexity into strategic advisory language.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">04</div>
+          <h3 class="pillar-title">Deliverables</h3>
+          <p class="pillar-body">Structured reports, exportable analyses, and board-ready visualisations for institutional use.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mandate section -->
+    <div class="landing-mandate">
+      <div class="mandate-inner">
+        <div class="mandate-label">Our Mandate</div>
+        <blockquote class="mandate-quote">
+          Contract risk is not a legal problem. It is a strategic problem. VERITAS exists to close the gap between legal complexity and executive clarity.
+        </blockquote>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECTION 2 — ANALYSIS WORKSPACE
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <section id="section-workspace" class="page-section">
+
+    <div class="workspace-layout">
+
+      <!-- Left: Input column -->
+      <div class="workspace-input-col">
+
+        <div class="workspace-header">
+          <div class="ws-header-label">Analysis Workspace</div>
+          <h2 class="ws-header-title">Contract Review</h2>
+        </div>
+
+        <!-- Pipeline -->
+        <div class="pipeline-container">
+          <div class="pipeline-label">Processing Pipeline</div>
+          <div class="pipeline-track">
+            <div class="pipe-step" id="pipe-seg">
+              <div class="pipe-step-inner">
+                <span class="pipe-step-num">01</span>
+                <span class="pipe-step-name">Extract</span>
+              </div>
+              <div class="pipe-step-dot"></div>
+            </div>
+            <div class="pipe-line"></div>
+            <div class="pipe-step" id="pipe-cls">
+              <div class="pipe-step-inner">
+                <span class="pipe-step-num">02</span>
+                <span class="pipe-step-name">Classify</span>
+              </div>
+              <div class="pipe-step-dot"></div>
+            </div>
+            <div class="pipe-line"></div>
+            <div class="pipe-step" id="pipe-onto">
+              <div class="pipe-step-inner">
+                <span class="pipe-step-num">03</span>
+                <span class="pipe-step-name">Reason</span>
+              </div>
+              <div class="pipe-step-dot"></div>
+            </div>
+            <div class="pipe-line"></div>
+            <div class="pipe-step" id="pipe-llm">
+              <div class="pipe-step-inner">
+                <span class="pipe-step-num">04</span>
+                <span class="pipe-step-name">Interpret</span>
+              </div>
+              <div class="pipe-step-dot"></div>
+            </div>
+            <div class="pipe-line"></div>
+            <div class="pipe-step" id="pipe-rep">
+              <div class="pipe-step-inner">
+                <span class="pipe-step-num">05</span>
+                <span class="pipe-step-name">Report</span>
+              </div>
+              <div class="pipe-step-dot"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input card -->
+        <div class="input-panel">
+          <div class="input-panel-toolbar">
+            <input
+              type="text"
+              id="contract-title"
+              class="title-field"
+              placeholder="Document title"
+              value="Software License Agreement"
+            />
+            <div class="toolbar-actions">
+              <label class="tool-btn" for="file-upload" title="Upload .txt">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Upload
+              </label>
+              <input type="file" id="file-upload" accept=".txt" style="display:none" />
+              <button class="tool-btn" id="btn-sample">Sample</button>
+            </div>
+          </div>
+
+          <textarea
+            id="contract-text"
+            class="contract-area"
+            placeholder="Paste legal contract text here. The system will segment clauses, classify risk, and generate executive-grade analysis."
+            spellcheck="false"
+          ></textarea>
+
+          <div class="input-panel-footer">
+            <span class="char-indicator" id="char-count">0 characters</span>
+            <button class="analyse-btn" id="btn-analyse">
+              <span class="analyse-btn-text">Run Analysis</span>
+              <span class="analyse-btn-loader" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Results column -->
+      <div class="workspace-results-col" id="results" style="display:none">
+
+        <div id="error-banner" class="alert-panel" style="display:none">
+          <span class="alert-icon">—</span>
+          <span id="error-msg" class="alert-text"></span>
+        </div>
+
+        <div class="results-inner results-wrapper">
+
+          <div class="mode-tag-row">
+            <span class="mode-tag" id="mode-pill"></span>
+          </div>
+
+          <!-- Executive Summary Metrics -->
+          <div class="results-block">
+            <div class="results-block-header">
+              <span class="rblock-label">Executive Summary</span>
+            </div>
+            <div class="exec-metrics">
+              <div class="exec-metric">
+                <span class="em-value" id="s-total">—</span>
+                <span class="em-key">Total Clauses</span>
+              </div>
+              <div class="exec-metric">
+                <span class="em-value" id="s-mean">—</span>
+                <span class="em-key">Mean Exposure</span>
+              </div>
+              <div class="exec-metric">
+                <span class="em-value" id="s-high">—</span>
+                <span class="em-key">High Risk</span>
+              </div>
+              <div class="exec-metric exec-metric--rating">
+                <span class="em-value em-value--rating" id="s-rating">—</span>
+                <span class="em-key">Overall Rating</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Clause Analysis Table -->
+          <div class="results-block">
+            <div class="results-block-header">
+              <span class="rblock-label">Clause Analysis</span>
+              <span class="rblock-count" id="clause-count"></span>
+            </div>
+            <div class="clause-registry">
+              <div class="registry-head">
+                <span class="rh-col rh-num">#</span>
+                <span class="rh-col rh-type">Clause Type</span>
+                <span class="rh-col rh-conf">Confidence</span>
+                <span class="rh-col rh-risk">Risk Score</span>
+                <span class="rh-col rh-domains">Domains</span>
+                <span class="rh-col rh-action"></span>
+              </div>
+              <div class="registry-body" id="clause-table-body"></div>
+            </div>
+          </div>
+
+          <!-- Clause Detail Cards -->
+          <div class="results-block">
+            <div class="results-block-header">
+              <span class="rblock-label">Clause Intelligence</span>
+            </div>
+            <div id="clause-cards" class="clause-cards-stack"></div>
+          </div>
+
+          <!-- Visualisations -->
+          <div class="results-block" id="viz-section" style="display:none">
+            <div class="results-block-header">
+              <span class="rblock-label">Risk Visualisation</span>
+            </div>
+            <div class="viz-panels">
+              <div class="viz-panel">
+                <div class="viz-panel-label">Risk Dashboard</div>
+                <img id="viz-dashboard" src="" alt="Risk Dashboard" class="viz-output" />
+              </div>
+              <div class="viz-panel">
+                <div class="viz-panel-label">Domain Activation</div>
+                <img id="viz-heatmap" src="" alt="Domain Heatmap" class="viz-output" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Intelligence Report -->
+          <div class="results-block">
+            <div class="results-block-header">
+              <span class="rblock-label">Intelligence Report</span>
+            </div>
+            <div class="report-sections" id="report-grid"></div>
+          </div>
+
+          <!-- Export Deliverables -->
+          <div class="results-block">
+            <div class="results-block-header">
+              <span class="rblock-label">Deliverables</span>
+            </div>
+            <div class="deliverables-row">
+              <a href="/download/json" class="deliverable-btn" target="_blank">
+                <span class="deliverable-icon">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </span>
+                JSON Report
+              </a>
+              <a href="/download/csv" class="deliverable-btn" target="_blank">
+                <span class="deliverable-icon">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </span>
+                CSV Analysis
+              </a>
+              <a href="/download/txt" class="deliverable-btn" target="_blank">
+                <span class="deliverable-icon">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </span>
+                Text Report
+              </a>
+            </div>
+          </div>
+
+        </div><!-- /results-inner -->
+      </div><!-- /workspace-results-col -->
+
+    </div><!-- /workspace-layout -->
+
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECTION 3 — INTELLIGENCE ARCHITECTURE
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <section id="section-intelligence" class="page-section">
+    <div class="intel-layout">
+
+      <div class="intel-header">
+        <div class="intel-eyebrow">Intelligence Architecture</div>
+        <h2 class="intel-title">The VERITAS<br><em>Analysis Stack</em></h2>
+        <p class="intel-intro">Three distinct intelligence layers operating in concert to produce institutional-grade contract analysis. Each layer contributes a distinct form of reasoning to the composite result.</p>
+      </div>
+
+      <div class="intel-layers">
+
+        <div class="intel-layer">
+          <div class="layer-tag">Layer I</div>
+          <h3 class="layer-title">Neural Classification</h3>
+          <p class="layer-subtitle">Legal-BERT Transformer Model</p>
+          <p class="layer-body">A fine-tuned transformer model trained on legal corpora identifies and classifies clause types with high precision. The model assigns confidence scores reflecting classification certainty and provides the foundational typology for downstream reasoning.</p>
+          <div class="layer-details">
+            <span class="layer-detail">Clause segmentation</span>
+            <span class="layer-detail">Type classification</span>
+            <span class="layer-detail">Confidence scoring</span>
+          </div>
+        </div>
+
+        <div class="intel-layer-connector">
+          <div class="connector-line"></div>
+          <div class="connector-label">feeds into</div>
+          <div class="connector-line"></div>
+        </div>
+
+        <div class="intel-layer">
+          <div class="layer-tag">Layer II</div>
+          <h3 class="layer-title">Symbolic Reasoning</h3>
+          <p class="layer-subtitle">Ontology & Knowledge Representation</p>
+          <p class="layer-body">A formal legal ontology enriches classified clauses with structured knowledge about legal concepts, dependencies, and risk domains. Knowledge representation and reasoning (KRR) methods surface latent contractual relationships and multi-domain exposure vectors.</p>
+          <div class="layer-details">
+            <span class="layer-detail">Ontology enrichment</span>
+            <span class="layer-detail">Risk domain mapping</span>
+            <span class="layer-detail">Dependency analysis</span>
+          </div>
+        </div>
+
+        <div class="intel-layer-connector">
+          <div class="connector-line"></div>
+          <div class="connector-label">feeds into</div>
+          <div class="connector-line"></div>
+        </div>
+
+        <div class="intel-layer">
+          <div class="layer-tag">Layer III</div>
+          <h3 class="layer-title">Generative Explanation</h3>
+          <p class="layer-subtitle">Large Language Model Synthesis</p>
+          <p class="layer-body">A large language model synthesises the structured outputs of Layers I and II into executive-grade natural language. Plain English summaries, legal implications, business implications, and risk interpretations are generated for each clause and the contract as a whole.</p>
+          <div class="layer-details">
+            <span class="layer-detail">Plain English translation</span>
+            <span class="layer-detail">Legal implications</span>
+            <span class="layer-detail">Business advisory</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="intel-pipeline-visual">
+        <div class="ipv-label">Analysis Pipeline</div>
+        <div class="ipv-flow">
+          <div class="ipv-node">
+            <div class="ipv-node-num">01</div>
+            <div class="ipv-node-name">Extract</div>
+          </div>
+          <div class="ipv-arrow">→</div>
+          <div class="ipv-node">
+            <div class="ipv-node-num">02</div>
+            <div class="ipv-node-name">Classify</div>
+          </div>
+          <div class="ipv-arrow">→</div>
+          <div class="ipv-node">
+            <div class="ipv-node-num">03</div>
+            <div class="ipv-node-name">Reason</div>
+          </div>
+          <div class="ipv-arrow">→</div>
+          <div class="ipv-node">
+            <div class="ipv-node-num">04</div>
+            <div class="ipv-node-name">Interpret</div>
+          </div>
+          <div class="ipv-arrow">→</div>
+          <div class="ipv-node">
+            <div class="ipv-node-num">05</div>
+            <div class="ipv-node-name">Report</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="intel-cta">
+        <button class="intel-start-btn" onclick="showSection('workspace')">
+          Begin Contract Analysis
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ──────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">VERITAS</span>
+        <span class="footer-tagline">Contract Intelligence Platform</span>
+      </div>
+      <div class="footer-legal">
+        <span>Symbolic risk scores are heuristic approximations.</span>
+        <span class="footer-divider">·</span>
+        <span>Not legal advice.</span>
+        <span class="footer-divider">·</span>
+        <span>For institutional use only.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
