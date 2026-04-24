@@ -20,6 +20,29 @@ VERITAS was developed as an end-to-end AI-powered legal intelligence system capa
 
 The system combines multiple AI paradigms into a unified architecture, moving beyond traditional single-model NLP pipelines.
 
+# Dataset Information
+
+VERITAS was primarily developed using the **CUAD (Contract Understanding Atticus Dataset)** for legal clause extraction, annotation, and classification tasks.
+
+Key dataset files used:
+
+* `test.json`
+* `train_separate_questions.json`
+
+The system was trained and evaluated on commercial contract clauses covering areas such as:
+
+* governing law
+* termination
+* indemnification
+* intellectual property
+* warranties
+* exclusivity
+* liability limitations
+* dispute resolution
+
+Additional synthetic and manually enriched datasets were also created to improve ontology coverage, class balance, and explainability generation.  
+
+
 ---
 
 # AI Paradigms Implemented
@@ -236,10 +259,6 @@ http://127.0.0.1:5000
   * offline fallback explainability mode
 
 ---
-
-# Screenshots
-
-*Add frontend screenshots, ontology graphs, heatmaps, and pipeline visualizations here.*
 
 ---
 
