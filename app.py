@@ -2,7 +2,6 @@
 app.py — Flask frontend wrapper for the Hybrid AI Legal Analysis System.
 
 Imports and reuses analyse_document() from Notebook 03 directly.
-Does NOT modify or duplicate any backend AI pipeline logic.
 """
 
 import os
@@ -12,13 +11,8 @@ import traceback
 
 from flask import Flask, request, jsonify, render_template, send_from_directory
 
-# ── Ensure the project root is on the path so NB03 modules resolve ────────────
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-# ── Import the completed NB03 pipeline ───────────────────────────────────────
-# The notebook must have been converted to a module or its pipeline cells
-# extracted into nb03_pipeline.py (see note below).
-# For demo purposes we import analyse_document from nb03_pipeline.
 try:
     from nb03_pipeline import analyse_document, USE_REAL_LLM
     PIPELINE_LOADED = True
